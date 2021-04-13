@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -20,7 +21,11 @@ module.exports = {
         new HtmlWebpackPlugin({
                                   title: 'Movierama in Vanilla JS',
                                   meta: {viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'}
-                              })
+                              }),
+        new MiniCssExtractPlugin({
+                                     filename: '[name].css',
+                                     chunkFilename: '[id].css'
+                                 })
     ],
     module: {
         rules: [
@@ -41,7 +46,7 @@ module.exports = {
                 test: /\.(png|jpg|gif)$/i,
                 type: 'asset/resource'
             }
-        ],
-    },
+        ]
+    }
 };
 
