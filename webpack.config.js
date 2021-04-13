@@ -32,15 +32,17 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Successfully use url() in variables and mixins
-                    "resolve-url-loader",
-                    // Creates `style` nodes from JS strings
-                    "style-loader",
+                    // fallback to style-loader in development
+                    process.env.NODE_ENV !== 'production'
+                    ? 'style-loader'
+                    : MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
-                    "css-loader",
+                    'css-loader',
+                    // Successfully use url() in variables and mixins
+                    'resolve-url-loader',
                     // Compiles Sass to CSS
-                    "sass-loader",
-                ],
+                    'sass-loader'
+                ]
             },
             {
                 test: /\.(png|jpg|gif)$/i,
