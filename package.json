@@ -5,6 +5,8 @@
     "description": "Yet another movierama app in vanilla JavaScript",
     "main": "src/index.js",
     "scripts": {
+        "start": "webpack serve --mode=development --open",
+        "build": "webpack --mode=production",
         "test": "test"
     },
     "repository": {
