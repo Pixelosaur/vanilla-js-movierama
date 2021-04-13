@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssCleanupPlugin = require('css-cleanup-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -25,7 +26,8 @@ module.exports = {
         new MiniCssExtractPlugin({
                                      filename: '[name].css',
                                      chunkFilename: '[id].css'
-                                 })
+                                 }),
+        new CssCleanupPlugin()
     ],
     module: {
         rules: [
