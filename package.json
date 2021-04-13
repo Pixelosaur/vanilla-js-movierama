@@ -1,0 +1,28 @@
+{
+    "name": "vanilla-js-movierama",
+    "version": "1.0.0",
+    "private": true,
+    "description": "Yet another movierama app in vanilla JavaScript",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Pixelosaur/vanilla-js-movierama.git"
+    },
+    "keywords": [
+        "js",
+        "vanilla",
+        "js",
+        "babel",
+        "webpack",
+        "es10"
+    ],
+    "author": "Christina Giannouli",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Pixelosaur/vanilla-js-movierama/issues"
+    },
+    "homepage": "https://github.com/Pixelosaur/vanilla-js-movierama#readme"
+}
