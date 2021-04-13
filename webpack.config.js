@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssCleanupPlugin = require('css-cleanup-webpack-plugin');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
@@ -27,7 +28,27 @@ module.exports = {
                                      filename: '[name].css',
                                      chunkFilename: '[id].css'
                                  }),
-        new CssCleanupPlugin()
+        new CssCleanupPlugin(),
+        new ImageMinimizerPlugin({
+                                     minimizerOptions: {
+                                         // Lossless optimization with custom option
+                                         plugins: [
+                                             ['gifsicle', { interlaced: true }],
+                                             ['jpegtran', { progressive: true }],
+                                             ['optipng', { optimizationLevel: 5 }],
+                                             [
+                                                 'svgo',
+                                                 {
+                                                     plugins: [
+                                                         {
+                                                             removeViewBox: false,
+                                                         },
+                                                     ],
+                                                 },
+                                             ],
+                                         ],
+                                     },
+                                 }),
     ],
     module: {
         rules: [
@@ -47,8 +68,8 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif)$/i,
-                type: 'asset/resource'
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                type: 'asset',
             }
         ]
     }
