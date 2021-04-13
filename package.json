@@ -28,7 +28,13 @@
     },
     "homepage": "https://github.com/Pixelosaur/vanilla-js-movierama#readme",
     "devDependencies": {
+        "css-loader": "^5.2.1",
         "html-webpack-plugin": "^5.3.1",
+        "node-sass": "^5.0.0",
+        "resolve-url-loader": "^3.1.2",
+        "sass": "^1.32.8",
+        "sass-loader": "^11.0.1",
+        "style-loader": "^2.0.0",
         "webpack": "^5.32.0",
         "webpack-cli": "^4.6.0",
         "webpack-dev-server": "^3.11.2"
