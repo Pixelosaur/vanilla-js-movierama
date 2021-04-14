@@ -33,21 +33,21 @@ module.exports = {
                                      minimizerOptions: {
                                          // Lossless optimization with custom option
                                          plugins: [
-                                             ['gifsicle', { interlaced: true }],
-                                             ['jpegtran', { progressive: true }],
-                                             ['optipng', { optimizationLevel: 5 }],
+                                             ['gifsicle', {interlaced: true}],
+                                             ['jpegtran', {progressive: true}],
+                                             ['optipng', {optimizationLevel: 5}],
                                              [
                                                  'svgo',
                                                  {
                                                      plugins: [
                                                          {
-                                                             removeViewBox: false,
-                                                         },
-                                                     ],
-                                                 },
-                                             ],
-                                         ],
-                                     },
+                                                             removeViewBox: false
+                                                         }
+                                                     ]
+                                                 }
+                                             ]
+                                         ]
+                                     }
                                  }),
     ],
     module: {
@@ -69,18 +69,13 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                type: 'asset',
+                type: 'asset'
             },
             {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: [
-                            ['@babel/preset-env', { targets: "defaults" }]
-                        ]
-                    }
                 }
             }
         ]
