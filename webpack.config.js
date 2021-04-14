@@ -1,8 +1,9 @@
 const path = require('path');
+const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssCleanupPlugin = require('css-cleanup-webpack-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = {
@@ -28,7 +29,9 @@ module.exports = {
                                      filename: '[name].css',
                                      chunkFilename: '[id].css'
                                  }),
-        new CssCleanupPlugin(),
+        new PurgeCSSPlugin({
+                               paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
+                           }),
         new ImageMinimizerPlugin({
                                      minimizerOptions: {
                                          // Lossless optimization with custom option
