@@ -3,6 +3,7 @@ const glob = require('glob');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
@@ -88,6 +89,11 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin(),
+        ],
+    },
 };
 
