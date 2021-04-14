@@ -5,6 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
+
+const PATHS = {
+    src: path.join(__dirname, 'src')
+}
 
 module.exports = {
     entry: './src/index.js',
@@ -52,6 +57,7 @@ module.exports = {
                                          ]
                                      }
                                  }),
+        new ESLintPlugin(),
     ],
     module: {
         rules: [
