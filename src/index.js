@@ -1,3 +1,3 @@
-import "./styles/main.scss";
+import App from './app/app.module';
 
-console.log("hello world")
+App.init();
