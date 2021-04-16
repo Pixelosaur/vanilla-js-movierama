@@ -15,9 +15,10 @@
         "url": "git+https://github.com/Pixelosaur/vanilla-js-movierama.git"
     },
     "keywords": [
-        "js",
-        "vanilla",
-        "js",
+        "javascript",
+        "vanilla js",
+        "prettier",
+        "eslint",
         "babel",
         "webpack",
         "es10"
