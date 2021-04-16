@@ -12,7 +12,7 @@ const PATHS = {
     src: path.join(__dirname, 'src'),
 };
 
-module.exports = {
+module.exports = (env, argv) => ({
     entry: { app: './src/index.js' },
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -24,7 +24,7 @@ module.exports = {
         hot: true,
         liveReload: false,
     },
-    devtool: 'inline-source-map',
+    devtool: argv.mode !== 'production' ? 'source-map' : false,
     plugins: [
         new webpack.HotModuleReplacementPlugin({}),
         new HtmlWebpackPlugin({
@@ -67,7 +67,6 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    { loader: 'style-loader', options: { injectType: 'linkTag' } },
                     MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
                     'css-loader',
@@ -102,6 +101,7 @@ module.exports = {
                 },
             },
         },
-        minimizer: [new CssMinimizerPlugin()],
+        minimize: argv.mode === 'production',
+        minimizer: [new CssMinimizerPlugin(), '...'],
     },
-};
+});
