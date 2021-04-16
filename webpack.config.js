@@ -67,10 +67,8 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // fallback to style-loader in development
-                    process.env.NODE_ENV !== 'production'
-                    ? 'style-loader'
-                    : MiniCssExtractPlugin.loader,
+                    { loader: 'style-loader', options: { injectType: 'linkTag' } },
+                    MiniCssExtractPlugin.loader,
                     // Translates CSS into CommonJS
                     'css-loader',
                     // Successfully use url() in variables and mixins
