@@ -4,13 +4,13 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const PurgeCSSPlugin = require('purgecss-webpack-plugin')
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const PATHS = {
-    src: path.join(__dirname, 'src')
-}
+    src: path.join(__dirname, 'src'),
+};
 
 module.exports = {
     entry: { app: './src/index.js' },
@@ -22,7 +22,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         hot: true,
-        liveReload: false
+        liveReload: false,
     },
     devtool: 'inline-source-map',
     plugins: [
@@ -34,32 +34,32 @@ module.exports = {
             filename: 'index.html',
         }),
         new MiniCssExtractPlugin({
-                                     filename: '[name].css',
-                                     chunkFilename: '[id].css'
-                                 }),
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        }),
         new PurgeCSSPlugin({
-                               paths: glob.sync(`${PATHS.src}/**/*`,  { nodir: true }),
-                           }),
+            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+        }),
         new ImageMinimizerPlugin({
-                                     minimizerOptions: {
-                                         // Lossless optimization with custom option
-                                         plugins: [
-                                             ['gifsicle', {interlaced: true}],
-                                             ['jpegtran', {progressive: true}],
-                                             ['optipng', {optimizationLevel: 5}],
-                                             [
-                                                 'svgo',
-                                                 {
-                                                     plugins: [
-                                                         {
-                                                             removeViewBox: false
-                                                         }
-                                                     ]
-                                                 }
-                                             ]
-                                         ]
-                                     }
-                                 }),
+            minimizerOptions: {
+                // Lossless optimization with custom option
+                plugins: [
+                    ['gifsicle', { interlaced: true }],
+                    ['jpegtran', { progressive: true }],
+                    ['optipng', { optimizationLevel: 5 }],
+                    [
+                        'svgo',
+                        {
+                            plugins: [
+                                {
+                                    removeViewBox: false,
+                                },
+                            ],
+                        },
+                    ],
+                ],
+            },
+        }),
         new ESLintPlugin(),
     ],
     module: {
@@ -74,21 +74,21 @@ module.exports = {
                     // Successfully use url() in variables and mixins
                     'resolve-url-loader',
                     // Compiles Sass to CSS
-                    'sass-loader'
-                ]
+                    'sass-loader',
+                ],
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                type: 'asset'
+                type: 'asset',
             },
             {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                }
-            }
-        ]
+                },
+            },
+        ],
     },
     optimization: {
         splitChunks: {
@@ -105,4 +105,3 @@ module.exports = {
         minimizer: [new CssMinimizerPlugin()],
     },
 };
-
