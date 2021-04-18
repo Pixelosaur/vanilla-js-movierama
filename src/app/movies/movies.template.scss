@@ -1,0 +1,20 @@
+@import '../styles/utils/mixins';
+
+.movies {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  display: grid;
+  @include grid-cols(1);
+
+  @include viewport-md {
+    @include grid-cols(2);
+  }
+
+  @include viewport-xl-1 {
+    @include grid-cols(3);
+  }
+
+  @include viewport-xl-2 {
+    @include grid-cols(4);
+  }
+}
