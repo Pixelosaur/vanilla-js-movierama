@@ -1,0 +1,18 @@
+// Color Palette
+$base-mint-green-color: #b3ffab;
+$base-turquoise-blue: #12fff7;
+
+$base-rich-black-color: #010400;
+$base-black-color: #292929;
+
+// Gradients
+$base-mint-turquoise-text-gradient: linear-gradient(
+  62deg,
+  $base-mint-green-color 0%,
+  $base-turquoise-blue 25%
+);
+$base-mint-turquoise-gradient: linear-gradient(
+  62deg,
+  $base-mint-green-color 0%,
+  $base-turquoise-blue 100%
+);
