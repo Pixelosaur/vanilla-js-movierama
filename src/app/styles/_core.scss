@@ -6,6 +6,7 @@
 $body-background-color: $base-black-color;
 $body__title-color: $base-mint-green-color;
 $body__title-gradient: $base-mint-turquoise-text-gradient;
+$body__footer-text-color: #{lighten($body-background-color, 20%)};
 
 body {
   font-size: 1rem;
@@ -74,5 +75,12 @@ body {
     @include viewport-xl-4 {
       max-width: 1680px;
     }
+  }
+
+  footer {
+    @extend header;
+    text-align: center;
+    font-size: 0.875rem;
+    color: $body__footer-text-color;
   }
 }
