@@ -32,6 +32,7 @@ body {
       font-weight: 700;
       font-size: 2rem;
       width: fit-content;
+      width: -moz-fit-content;
       margin: auto;
       background-color: $body__title-color;
       background-image: $body__title-gradient;
