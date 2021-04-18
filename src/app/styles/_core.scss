@@ -30,13 +30,21 @@ body {
 
     .app-title {
       font-weight: 700;
-      font-size: 2.5rem;
+      font-size: 2rem;
       width: fit-content;
       margin: auto;
       background-color: $body__title-color;
       background-image: $body__title-gradient;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      @include viewport-md {
+        font-size: 2.5rem;
+      }
+
+      @include viewport-xl-1 {
+        font-size: 3rem;
+      }
     }
   }
 
