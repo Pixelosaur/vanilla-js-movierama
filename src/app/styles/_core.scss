@@ -48,6 +48,9 @@ body {
     margin-left: auto;
     padding-right: 1rem;
     padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include viewport-sm {
       max-width: 540px;
