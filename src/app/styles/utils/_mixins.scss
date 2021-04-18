@@ -1,3 +1,6 @@
+@import 'breakpoints';
+
+// Shadows
 @mixin shadow {
   box-shadow: 0 2px 8px 2px rgba(1, 4, 0, 0.18);
 }
@@ -6,6 +9,58 @@
   box-shadow: 0 8px 32px 0 rgba(1, 4, 0, 0.37);
 }
 
+// Transitions - Animations
 @mixin transition-all {
   transition: all ease-in-out 300ms;
+}
+
+// Media queries
+
+// Small devices (landscape phones, 576px and up)
+@mixin viewport-sm {
+  @media (min-width: $sm) {
+    @content;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@mixin viewport-md {
+  @media (min-width: $md) {
+    @content;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@mixin viewport-lg {
+  @media (min-width: $lg) {
+    @content;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@mixin viewport-xl-1 {
+  @media (min-width: $xl-1) {
+    @content;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@mixin viewport-xl-2 {
+  @media (min-width: $xl-2) {
+    @content;
+  }
+}
+
+// XXX-Large devices (larger desktops, 1600px and up)
+@mixin viewport-xl-3 {
+  @media (min-width: $xl-3) {
+    @content;
+  }
+}
+
+// XXXX-Large devices (larger desktops, 1800px and up)
+@mixin viewport-xl-4 {
+  @media (min-width: $xl-4) {
+    @content;
+  }
 }
