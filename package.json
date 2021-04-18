@@ -7,7 +7,7 @@
     "scripts": {
         "start": "webpack serve --mode=development --open",
         "build": "webpack --mode=production",
-        "prettier": "prettier --write '**/*.js'",
+        "prettier": "prettier --write '**/*.js' '**/*scss'",
         "lint": "eslint src/app --fix",
         "test": "test"
     },
