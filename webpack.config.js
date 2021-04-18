@@ -9,99 +9,99 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const PATHS = {
-    src: path.join(__dirname, 'src'),
+  src: path.join(__dirname, 'src'),
 };
 
 module.exports = (env, argv) => ({
-    entry: { app: './src/index.js' },
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[hash].bundle.js',
-    },
-    devServer: {
-        contentBase: path.join(__dirname, 'dist'),
-        compress: true,
-        hot: true,
-        liveReload: false,
-    },
-    devtool: argv.mode !== 'production' ? 'source-map' : false,
-    plugins: [
-        new webpack.HotModuleReplacementPlugin({}),
-        new HtmlWebpackPlugin({
-            inject: true,
-            hash: true,
-            template: './src/index.html',
-            filename: 'index.html',
-        }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css',
-            chunkFilename: '[id].css',
-        }),
-        new PurgeCSSPlugin({
-            paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-        }),
-        new ImageMinimizerPlugin({
-            minimizerOptions: {
-                // Lossless optimization with custom option
-                plugins: [
-                    ['gifsicle', { interlaced: true }],
-                    ['jpegtran', { progressive: true }],
-                    ['optipng', { optimizationLevel: 5 }],
-                    [
-                        'svgo',
-                        {
-                            plugins: [
-                                {
-                                    removeViewBox: false,
-                                },
-                            ],
-                        },
-                    ],
-                ],
-            },
-        }),
-        new ESLintPlugin(),
-    ],
-    module: {
-        rules: [
+  entry: { app: './src/index.js' },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name].[hash].bundle.js',
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
+    hot: true,
+    liveReload: false,
+  },
+  devtool: argv.mode !== 'production' ? 'source-map' : false,
+  plugins: [
+    new webpack.HotModuleReplacementPlugin({}),
+    new HtmlWebpackPlugin({
+      inject: true,
+      hash: true,
+      template: './src/index.html',
+      filename: 'index.html',
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+    new PurgeCSSPlugin({
+      paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+    }),
+    new ImageMinimizerPlugin({
+      minimizerOptions: {
+        // Lossless optimization with custom option
+        plugins: [
+          ['gifsicle', { interlaced: true }],
+          ['jpegtran', { progressive: true }],
+          ['optipng', { optimizationLevel: 5 }],
+          [
+            'svgo',
             {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    // Translates CSS into CommonJS
-                    'css-loader',
-                    // Successfully use url() in variables and mixins
-                    'resolve-url-loader',
-                    // Compiles Sass to CSS
-                    'sass-loader',
-                ],
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                type: 'asset',
-            },
-            {
-                test: /\.m?js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
+              plugins: [
+                {
+                  removeViewBox: false,
                 },
+              ],
             },
+          ],
         ],
-    },
-    optimization: {
-        splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-                styles: {
-                    name: 'styles',
-                    test: /\.css$/,
-                    chunks: 'all',
-                    enforce: true,
-                },
-            },
+      },
+    }),
+    new ESLintPlugin(),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Successfully use url() in variables and mixins
+          'resolve-url-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: 'asset',
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
         },
-        minimize: argv.mode === 'production',
-        minimizer: [new CssMinimizerPlugin(), '...'],
+      },
+    ],
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
     },
+    minimize: argv.mode === 'production',
+    minimizer: [new CssMinimizerPlugin(), '...'],
+  },
 });
