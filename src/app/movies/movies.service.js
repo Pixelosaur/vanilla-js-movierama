@@ -14,10 +14,12 @@ const MoviesService = {
     return movies.results.map((result) => {
       const genreNames = result.genre_ids.map((id) => genres.find((genre) => genre.id === id).name);
       const posterPath = result.poster_path;
+      const year = new Date(result.release_date).getFullYear();
       return {
         ...result,
         genres: genreNames,
         fullPosterPath: `${imgBaseUrl}original${posterPath}`,
+        yearOfRelease: year,
       };
     });
   },
