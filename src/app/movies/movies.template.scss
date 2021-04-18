@@ -11,10 +11,10 @@
   }
 
   @include viewport-xl-1 {
-    @include grid-cols(3);
+    @include grid-cols(3, 2rem);
   }
 
   @include viewport-xl-2 {
-    @include grid-cols(4);
+    @include grid-cols(4, 2.5rem);
   }
 }
