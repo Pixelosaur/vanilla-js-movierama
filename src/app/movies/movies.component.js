@@ -2,6 +2,7 @@ import MoviesTemplate from './movies.template';
 import MovieTemplate from './movie/movie.template';
 import MoviesService from './movies.service';
 import './movies.template.scss';
+import './movie/movie.template.scss';
 
 const MoviesComponent = {
   init() {

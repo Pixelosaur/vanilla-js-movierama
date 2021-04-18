@@ -1,0 +1,109 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/mixins';
+
+$movie-item-background-color: $base-eerie-black-color;
+$movie-item__icon-color: $base-mint-green-color;
+$movie-item__icon-gradient: $base-mint-turquoise-text-gradient;
+$movie-item__badge-background-color: $base-black-color;
+$movie-item__badge-background-gradient: $base-mint-turquoise-gradient;
+
+.movie-item {
+  justify-self: stretch;
+  align-self: stretch;
+
+  background-color: $movie-item-background-color;
+  border-radius: 1.5rem;
+  @include shadow;
+
+  .overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+
+    .meta {
+      padding: 0 2rem;
+      font-weight: 200;
+      font-size: 1.125rem;
+
+      span {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+
+        .far {
+          transform: rotate(90deg);
+          background-color: $movie-item__icon-color;
+          background-image: $movie-item__icon-gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        span {
+          margin-top: 0.5rem;
+          margin-bottom: 1.25rem;
+          opacity: 0.8;
+          letter-spacing: 1px;
+        }
+      }
+    }
+    .poster {
+      img {
+        min-height: 100%;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        @include soft-shadow;
+      }
+    }
+  }
+
+  .genres {
+    padding: 1rem 1.5rem 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    .badge {
+      font-size: 0.875rem;
+      font-weight: 200;
+      background: $movie-item__badge-background-gradient;
+      border-radius: 50rem;
+      border: 1px solid transparent;
+      padding: 0 0.75rem;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.75px;
+      position: relative;
+      z-index: 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        background: $movie-item__badge-background-color;
+        border-radius: inherit;
+      }
+    }
+  }
+
+  .description {
+    padding: 1.5rem;
+
+    .title {
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.25rem;
+    }
+
+    p {
+      font-weight: 200;
+      opacity: 0.8;
+    }
+  }
+}
