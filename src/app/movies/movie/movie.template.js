@@ -18,9 +18,9 @@ const MovieTemplate = (movie) => `
         </div>
         <div class="genres">
             ${movie.genres.reduce(
-              (html, genre) => `${html} <span class="badge">${genre}</span>`,
-              '',
-            )}
+    (html, genre) => `${html} <span class="badge">${genre}</span>`,
+    '',
+  )}
         </div>
         <div class="description">
             <h4 class="title">${movie.title}</h4>
