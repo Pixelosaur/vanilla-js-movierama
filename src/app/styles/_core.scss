@@ -38,4 +38,41 @@ body {
       -webkit-text-fill-color: transparent;
     }
   }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    @include viewport-sm {
+      max-width: 540px;
+    }
+
+    @include viewport-md {
+      max-width: 720px;
+    }
+
+    @include viewport-lg {
+      max-width: 960px;
+    }
+
+    @include viewport-xl-1 {
+      max-width: 1140px;
+    }
+
+    @include viewport-xl-2 {
+      max-width: 1320px;
+    }
+
+    @include viewport-xl-3 {
+      max-width: 1580px;
+    }
+
+    @include viewport-xl-4 {
+      max-width: 1680px;
+    }
+  }
 }
