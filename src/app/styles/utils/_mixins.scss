@@ -64,3 +64,9 @@
     @content;
   }
 }
+
+// Grid
+@mixin grid-cols($repeat, $gap: 1.5rem) {
+  grid-template-columns: repeat($repeat, minmax(0, 1fr));
+  gap: $gap;
+}
