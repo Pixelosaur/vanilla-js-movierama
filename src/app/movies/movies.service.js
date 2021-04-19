@@ -24,13 +24,13 @@ const MoviesService = {
     });
   },
 
-  async getGenres() {
+  getGenres() {
     return fetch(`${API_BASE_URL}/genre/movie/list?api_key=${API_KEY}`, {
       method: 'GET',
     }).then((response) => response.json());
   },
 
-  async getMovies(page) {
+  getMovies(page) {
     return fetch(`${API_BASE_URL}/movie/now_playing?page=${page}&api_key=${API_KEY}`, {
       method: 'GET',
     }).then((response) => response.json());
