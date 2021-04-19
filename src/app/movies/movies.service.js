@@ -35,6 +35,14 @@ const MoviesService = {
       method: 'GET',
     }).then((response) => response.json());
   },
+
+  searchMovies(query) {
+    const encodedQuery = encodeURI(query);
+    const url = `${API_BASE_URL}/search/movie?query=${encodedQuery}&api_key=${API_KEY}`;
+    return fetch(url, {
+      method: 'GET',
+    }).then((response) => response.json());
+  },
 };
 
 export default MoviesService;
