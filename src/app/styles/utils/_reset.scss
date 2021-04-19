@@ -67,6 +67,16 @@ body {
   select {
     font: inherit;
   }
+
+  input {
+    appearance: none;
+    border-width: 0;
+    border-style: none;
+
+    &:focus {
+      outline: 0;
+    }
+  }
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */
