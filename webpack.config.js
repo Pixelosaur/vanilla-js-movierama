@@ -70,6 +70,7 @@ module.exports = (env, argv) => ({
           MiniCssExtractPlugin.loader,
           // Translates CSS into CommonJS
           'css-loader',
+          'postcss-loader',
           // Successfully use url() in variables and mixins
           'resolve-url-loader',
           // Compiles Sass to CSS
