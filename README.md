@@ -45,7 +45,7 @@ Run `npm run build` to build the project.
 Things that I would improve / add if I had more time to finish the project:
 
 - Tests - **I know it is very important!**
-- Search movies functionality with debounce to eliminate API calls (Currently it only makes API calls without updating the UI)
+- Search movies functionality with debounce to eliminate API calls
 - View Details accordion functionality to display hidden info about each movie
 - Loading indicator for infinite scroll
 - Handle server errors on UI (e.g display a user-friendly alert)
