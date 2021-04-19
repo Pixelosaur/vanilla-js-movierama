@@ -17,4 +17,9 @@
   @include viewport-xl-2 {
     @include grid-cols(4, 2.5rem);
   }
+
+  .movie-search {
+    margin: 0 auto 2rem auto;
+    grid-column: 1 / -1;
+  }
 }
